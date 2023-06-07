@@ -1,0 +1,16 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block body %}
+    <h1>Search Results</h1>
+    <p> You searched for {{query}}. {{results| length}} result{% if results|length > 1%}s{%endif%} found. </p> <!-- Display the query and the number of results| Need to add a space before and after the "<" operator --> 
+    <ul>
+        {% for result in results %}
+            <a href="{% url 'entry' title=result %}"><li>{{ result }}</li></a>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
